@@ -158,7 +158,7 @@ func (c *Console) longterm() (string, error) {
 	}
 
 	// TODO: make this configurable
-	region := "eu-west-1"
+	region := "us-west-1"
 
 	url := fmt.Sprintf("https://signin.aws.amazon.com/oauth?redirect_uri=https://%s.console.aws.amazon.com/console/home?region=%s&client_id=arn:aws:iam::015428540659:user/homepage&response_type=code&iam_user=true&account=%s",
 		region,

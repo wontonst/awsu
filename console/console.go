@@ -151,20 +151,21 @@ func (c *Console) longterm() (string, error) {
 
 	client := sts.New(creds.NewSession())
 
-	res, err := client.GetCallerIdentity(&sts.GetCallerIdentityInput{})
+	_, err = client.GetCallerIdentity(&sts.GetCallerIdentityInput{})
 
 	if err != nil {
 		return "", errors.Wrapf(err, errCallerIdentity)
 	}
 
 	// TODO: make this configurable
-	region := "us-west-1"
+	// region := "us-west-1"
 
-	url := fmt.Sprintf("https://signin.aws.amazon.com/oauth?redirect_uri=https://%s.console.aws.amazon.com/console/home?region=%s&client_id=arn:aws:iam::015428540659:user/homepage&response_type=code&iam_user=true&account=%s",
-		region,
-		region,
-		*res.Account,
-	)
+	url := "https://eatclub.signin.aws.amazon.com/console"
+	//url := fmt.Sprintf("https://signin.aws.amazon.com/oauth?redirect_uri=https://%s.console.aws.amazon.com/console/home?region=%s&client_id=arn:aws:iam::015428540659:user/homepage&response_type=code&iam_user=true&account=%s",
+	//	region,
+	//	region,
+	//	*res.Account,
+	//)
 
 	return url, nil
 
